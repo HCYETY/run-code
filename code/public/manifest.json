@@ -1,0 +1,33 @@
+{
+  "name": "run-code",
+  "version": "1.0",
+  "description": "Run the js code!",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "这是一个可在线运行 JS 代码的插件",
+    "default_popup": "index.html"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens popup.html"
+    }
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*","http://www.csdn.net/*"],
+      "js": ["background.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
