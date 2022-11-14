@@ -10,7 +10,7 @@ import { PROGRAM_LANGUAGE, PROGRAM_THEME } from './constants';
 // import 'monaco-editor/esm/vs/basic-languages/cpp/cpp.contribution';
 // import 'monaco-editor/esm/vs/basic-languages/java/java.contribution';
 // import 'monaco-editor/esm/vs/basic-languages/python/python.contribution';
-// import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution';
+import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution';
 // import 'monaco-editor/esm/vs/basic-languages/ruby/ruby.contribution';
 // import 'monaco-editor/esm/vs/basic-languages/swift/swift.contribution';
 // import 'monaco-editor/esm/vs/basic-languages/go/go.contribution';
@@ -44,7 +44,6 @@ function App(props) {
   const editOrRef = useRef();
   const ThisEditor = useRef();
   useEffect(() => {
-    console.log('value', value, 'language', language)
     monacoInstance  = monaco.editor.create(document.getElementById("container"), {
       value: value || "输入要运行的 JS 代码",
       contextmenu: true,

@@ -48,32 +48,39 @@ function App() {
   return (
     <Card
       title="Run code"
-      // style={{
-      //   width: '500px',
-      // }}
+      style={{
+        width: '800px',
+      }}
+      extra={<Button type='primary' onClick={run}>运行</Button>}
     >
       <Row gutter={16}>
-        <Col xs={{ span: 15 }} lg={{ span: 6 }}>
-          <CodeEditor getProgramCode={getProgramCode.bind(this)}/>
-          {/*<TextArea*/}
-          {/*  rows={4}*/}
-          {/*  placeholder="输入要运行的代码"*/}
-          {/*  onChange={onChange}*/}
-          {/*/>*/}
+        <Col xs={{ span: 13 }} lg={{ span: 13 }}>
+          <Card title='Input' bordered={false}>
+            <CodeEditor getProgramCode={getProgramCode.bind(this)}/>
+          </Card>
+          {/*<h3>Input</h3>*/}
+        {/*<TextArea*/}
+        {/*  rows={4}*/}
+        {/*  placeholder="输入要运行的代码"*/}
+        {/*  onChange={onChange}*/}
+        {/*/>*/}
         </Col>
-        <Col xs={{ span: 2 }} lg={{ span: 2 }}>
-          <Button type='primary' onClick={run}>运行</Button>
-        </Col>
-        <Col xs={{ span: 5}} lg={{ span: 6 }}>
-          <List
-            bordered
-            dataSource={data}
-            renderItem={(item) => (
-              <List.Item>
-                <Typography.Text mark>[ITEM]</Typography.Text> {item}
-              </List.Item>
-            )}
-          />
+        {/*<Col xs={{ span: 2 }} lg={{ span: 2 }}>*/}
+        {/*  <Button type='primary' onClick={run}>运行</Button>*/}
+        {/*</Col>*/}
+        <Col xs={{ span: 15}} lg={{ span: 6 }}>
+          {/*<h3>Output</h3>*/}
+          <Card title='Output' bordered={false}>
+            <List
+              bordered
+              dataSource={data}
+              renderItem={(item) => (
+                <List.Item>
+                  <Typography.Text mark>[ITEM]</Typography.Text> {item}
+                </List.Item>
+              )}
+            />
+          </Card>
         </Col>
       </Row>
     </Card>

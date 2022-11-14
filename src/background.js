@@ -1,4 +1,3 @@
-alert('ddd')
 Array.prototype.push = function() {
   console.log('调用了 arr 的 push')
   for (let argument of arguments) {
