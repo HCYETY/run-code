@@ -1,13 +1,20 @@
 // import logo from './logo.svg';
 import './App.css';
-import { Card, Input, Row, Col, Button, List, Typography, message } from 'antd';
-import React, { useState } from 'react';
+import {Card, Input, Row, Col, Button, List, Typography, message} from 'antd';
+import {
+  CloseCircleOutlined,
+  CheckCircleOutlined,
+} from '@ant-design/icons';
+
+import React, {useState} from 'react';
 import CodeEditor from "./codeEditor";
+
+const { Text } = Typography;
 const { TextArea } = Input;
 // import MonacoEditor from 'react-monaco-editor';
 
 function App() {
-  const [code, setCode] = useState("输入要运行的 JS 代码");
+  const [code, setCode] = useState("");
   const [data, setData] = useState([]);
   const editorDidMount = function (editor, monaco) {
     console.log('editorDidMount', editor);
@@ -29,15 +36,21 @@ function App() {
     let log = console.log;
     let arr = [];
     console.log = function (...args) {
-      arr.push(args);
-      log(...args);
+      args.map(arg => {
+        arr.push({ text: arg, type: 'default' });
+      })
     }
-    log(arr);
+    log('arr', arr);
 
     function fn() {
-      return code;
+      try {
+        eval(code)
+      } catch (e) {
+        arr.push({ text: e.message, type: 'danger' })
+      }
     }
-    const result = eval(fn());
+
+    const result = fn();
 
     if (result) {
       arr.push(result);
@@ -54,31 +67,37 @@ function App() {
       extra={<Button type='primary' onClick={run}>运行</Button>}
     >
       <Row gutter={16}>
-        <Col xs={{ span: 13 }} lg={{ span: 13 }}>
+        <Col xs={{span: 10}} lg={{span: 13}}>
           <Card title='Input' bordered={false}>
-            <CodeEditor getProgramCode={getProgramCode.bind(this)}/>
+            <TextArea
+              rows={14}
+              placeholder="输入要运行的代码"
+              onChange={onChange}
+            />
+            {/*<CodeEditor getProgramCode={getProgramCode.bind(this)}/>*/}
           </Card>
-          {/*<h3>Input</h3>*/}
-        {/*<TextArea*/}
-        {/*  rows={4}*/}
-        {/*  placeholder="输入要运行的代码"*/}
-        {/*  onChange={onChange}*/}
-        {/*/>*/}
         </Col>
-        {/*<Col xs={{ span: 2 }} lg={{ span: 2 }}>*/}
-        {/*  <Button type='primary' onClick={run}>运行</Button>*/}
-        {/*</Col>*/}
-        <Col xs={{ span: 15}} lg={{ span: 6 }}>
-          {/*<h3>Output</h3>*/}
+        <Col xs={{span: 11}} lg={{span: 11}}>
           <Card title='Output' bordered={false}>
             <List
               bordered
               dataSource={data}
-              renderItem={(item) => (
-                <List.Item>
-                  <Typography.Text mark>[ITEM]</Typography.Text> {item}
-                </List.Item>
-              )}
+              renderItem={(item) => {
+                let {text, type} = item;
+                const isDanger = type === 'danger';
+                return (
+                  <List.Item>
+                    <List.Item.Meta
+                      avatar={
+                        isDanger ?
+                        <CloseCircleOutlined style={{ color: 'red' }}/> :
+                        <CheckCircleOutlined style={{ color: 'green' }}/>
+                      }
+                      title={ isDanger ? <Text type='danger'>{text}</Text> : JSON.stringify(text) }
+                    />
+                  </List.Item>
+                )
+              }}
             />
           </Card>
         </Col>

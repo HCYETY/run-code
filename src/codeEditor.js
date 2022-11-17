@@ -20,7 +20,6 @@ import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution'
 // import * as monaco from 'monaco-editor/esm/vs/editor/editor.main.js';
 // const monaco = require('monaco-editor/esm/vs/editor/editor.api');
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
-import {UnControlled as CodeMirror} from 'react-codemirror2'
 
 let monacoInstance = null;
 
@@ -45,7 +44,7 @@ function App(props) {
   const ThisEditor = useRef();
   useEffect(() => {
     monacoInstance  = monaco.editor.create(document.getElementById("container"), {
-      value: value || "输入要运行的 JS 代码",
+      value: value,
       contextmenu: true,
       language: language || "javascript",
       theme: 'vs',

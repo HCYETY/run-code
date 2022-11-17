@@ -1,7 +1,7 @@
 {
   "name": "run-code",
   "version": "1.0",
-  "description": "Run the js code!",
+  "description": "这是一个可以运行js代码的插件，您只需将代码粘贴到输入框，运行后即可看到输出结果。",
   "manifest_version": 2,
   "browser_action": {
     "default_title": "这是一个可在线运行 JS 代码的插件",
