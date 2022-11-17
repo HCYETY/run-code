@@ -1,6 +1,6 @@
 import React, {Component, useEffect, useRef, useState} from 'react';
 import { Select, } from 'antd';
-import { PROGRAM_LANGUAGE, PROGRAM_THEME } from './constants';
+import { PROGRAM_LANGUAGE, PROGRAM_THEME } from '../constants';
 // import { Client, TextOperation,  } from 'ot';
 // import { getCookie, nowTime } from 'src/common/utils';
 

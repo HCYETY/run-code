@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons';
 
 import React, {useState} from 'react';
-import CodeEditor from "./codeEditor";
+import CodeEditor from "./components/codeEditor";
 
 const { Text } = Typography;
 const { TextArea } = Input;
