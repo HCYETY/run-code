@@ -8,6 +8,7 @@ import {
 
 import React, {useState} from 'react';
 import CodeEditor from "./components/codeEditor";
+import './background';
 
 const { Text } = Typography;
 const { TextArea } = Input;

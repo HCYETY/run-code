@@ -1,4 +1,21 @@
 @import '~antd/dist/antd.css';
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: 'iconfont';  /* Project id 3006625 */
+    src: url('//at.alicdn.com/t/c/font_3006625_7oknf23d27u.woff2?t=1668915184775') format('woff2'),
+    url('//at.alicdn.com/t/c/font_3006625_7oknf23d27u.woff?t=1668915184775') format('woff'),
+    url('//at.alicdn.com/t/c/font_3006625_7oknf23d27u.ttf?t=1668915184775') format('truetype');
+}
+.iconfont {
+    font-family: 'iconfont';
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+}
 
 .site-card-border-less-wrapper {
     padding: 30px;
